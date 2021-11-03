@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+
+<body>
+    <!-- Main Site: -->
+    <h1>Welcome to IIT Indore</h1>
+    <a href="/findcourse">
+        <button class="btn41-43 btn-41">Find Courses</button>
+    </a>
+    <a href="/finddepartment">
+        <button class="btn41-43 btn-41">Find Departments</button>
+    </a>
+    <a href="/findprofessor">
+        <button class="btn41-43 btn-41">Find Professor</button>
+    </a>
+
+    <!-- Departments -->
+    <!-- <h1>Departments</h1>s
+    <input type="checkbox" id="check" onclick="toggleBoxVisibility()">
+    <div id="box">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <div class="rangeslider">
+            <input class="min" name="range_1" type="range" min="2010" max="2021" value="2010" />
+            <input class="max" name="range_1" type="range" min="2010" max="2021" value="2021" />
+            <span class="range_min light left">2010</span>
+            <span class="range_max light right">2021</span>
+        </div>
+    </div> -->
+    <!-- <a href="/">
+        <button class="btn41-43 btn-41">Button</button>
+    </a> -->
+
+</body>
+
+<script>
+    function toggleBoxVisibility() {
+
+        if (document.getElementById("check").checked == true) {
+
+            document.getElementById("box").style.visibility = "visible";
+
+        }
+        else {
+
+            document.getElementById("box").style.visibility = "hidden";
+
+        }
+    }
+    (function () {
+
+        function addSeparator(nStr) {
+            nStr += '';
+            var x = nStr.split('.');
+            var x1 = x[0];
+            var x2 = x.length > 1 ? '.' + x[1] : '';
+            var rgx = /(\d+)(\d{3})/;
+            while (rgx.test(x1)) {
+                x1 = x1.replace(rgx, '$1' + ',' + '$2');
+            }
+            return x1 + x2;
+        }
+
+        function rangeInputChangeEventHandler(e) {
+            var rangeGroup = $(this).attr('name'),
+                minBtn = $(this).parent().children('.min'),
+                maxBtn = $(this).parent().children('.max'),
+                range_min = $(this).parent().children('.range_min'),
+                range_max = $(this).parent().children('.range_max'),
+                minVal = parseInt($(minBtn).val()),
+                maxVal = parseInt($(maxBtn).val()),
+                origin = $(this).context.className;
+
+            if (origin === 'min' && minVal > maxVal - 1) {
+                $(minBtn).val(maxVal - 1);
+            }
+            var minVal = parseInt($(minBtn).val());
+            $(range_min).html(addSeparator(minVal));
+
+
+            if (origin === 'max' && maxVal - 1 < minVal) {
+                $(maxBtn).val(1 + minVal);
+            }
+            var maxVal = parseInt($(maxBtn).val());
+            $(range_max).html(addSeparator(maxVal));
+        }
+
+        $('input[type="range"]').on('input', rangeInputChangeEventHandler);
+    })();
+</script>
+
+</html>
